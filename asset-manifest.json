@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/SerhiiIkin/Currency_converter/static/js/main.9a5a4821.js",
-    "index.html": "/SerhiiIkin/Currency_converter/index.html",
-    "main.9a5a4821.js.map": "/SerhiiIkin/Currency_converter/static/js/main.9a5a4821.js.map"
+    "main.js": "/static/js/main.9a5a4821.js",
+    "index.html": "/index.html",
+    "main.9a5a4821.js.map": "/static/js/main.9a5a4821.js.map"
   },
   "entrypoints": [
     "static/js/main.9a5a4821.js"
