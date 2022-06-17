@@ -1,6 +1,6 @@
 {
     "name": "new_app",
-    "homepage": "https://serhiiikin.github.io/",
+    "homepage": "https://serhiiikin.github.io",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
