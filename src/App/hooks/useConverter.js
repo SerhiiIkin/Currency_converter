@@ -63,8 +63,8 @@ function useConverter() {
                         setInputTwo(
                             calculateAnotherInput(
                                 value,
-                                secondselectValue,
-                                firstselectValue
+                                firstselectValue,
+                                secondselectValue
                             )
                         )
                     );
