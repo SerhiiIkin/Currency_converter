@@ -24,31 +24,44 @@ function useConverter() {
     );
 
     function changeSelectOne(value) {
-        const formula = (firstInputValue * firstselectValue) / value;
+        const formula = (
+            (secondInputValue * secondselectValue) /
+            value
+        ).toString();
+        const inputOneValue = sliceString(formula);
+        const inputTwoValue = sliceString(secondInputValue.toString());
+        const currentValue = sliceString(value.toString());
 
-        dispatch(setSelectOne(value));
+        dispatch(setSelectOne(currentValue));
 
         if (value === secondselectValue) {
-            dispatch(setInputOne(secondInputValue));
+            dispatch(setInputOne(inputTwoValue));
         } else {
-            dispatch(setInputOne(formula));
+            dispatch(setInputOne(inputOneValue));
         }
     }
 
     function changeSelectTwo(value) {
-        const formula = (firstInputValue * firstselectValue) / value;
+        const formula = (
+            (firstInputValue * firstselectValue) /
+            value
+        ).toString();
 
-        dispatch(setSelectTwo(value));
+        const inputOneValue = sliceString(firstInputValue.toString());
+        const inputTwoValue = sliceString(formula);
+        const currentValue = sliceString(value.toString());
+
+        dispatch(setSelectTwo(currentValue));
 
         if (value === firstselectValue) {
-            dispatch(setInputTwo(firstInputValue));
+            dispatch(setInputTwo(inputOneValue));
         } else {
-            dispatch(setInputTwo(formula));
+            dispatch(setInputTwo(inputTwoValue));
         }
     }
 
     function changeInput(e) {
-        let value = e.target.value;
+        let value = sliceString(e.target.value);
         const inputId = +e.target.id;
         const regex = /^(([0-9]){0,16}|(\d+\.{0,1}\d*))$/;
 
@@ -71,7 +84,7 @@ function useConverter() {
                 }
 
                 if (inputId === 2) {
-                    dispatch(setInputTwo(+value));
+                    dispatch(setInputTwo(value));
                     dispatch(
                         setInputOne(
                             calculateAnotherInput(
@@ -87,9 +100,18 @@ function useConverter() {
             dispatch(setInputError(true));
         }
 
-        function calculateAnotherInput(inputOne, inputTwo, selectValue) {
-            return (inputOne * inputTwo) / selectValue;
+        function calculateAnotherInput(thisInput, thisSelect, anotherSelect) {
+            const result = sliceString(
+                ((thisInput * thisSelect) / anotherSelect).toString()
+            );
+            return result !== "0" ? result : "";
         }
+    }
+
+    function sliceString(str) {
+        return str?.indexOf(".") !== -1
+            ? str.slice(0, str.indexOf(".") + 3)
+            : str;
     }
 
     return {
